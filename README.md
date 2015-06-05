@@ -2,11 +2,11 @@
 
 ## Utility functions and classes for Lucidity
 
-## TimeRef()
+## util.elapsed()
 
 Returns elapsed time since application start in secondes.
 
-## Continuous
+## util.Continuous
 
 When a value is regularly updated by an external source (midi sync, osc
 messages, etc) the value 'jumps' every time. This transforms a 'jumping', linear
@@ -16,22 +16,15 @@ value change to a continuous value.
 Usage example:
 
 ```js
-  const midi = require('lucy-midi')
-  const app  = requier('lucy-app')
+  const util = require('lucy-util')
 
-  // Enable midi sync with virtual port 'Lucidity'
-  const sync = new midi.Sync('Lucidity', function(v) {
-    app.setSong(v)
-  })
-
-  // Or simply
-  app.startMidiSync('Lucidity')
+  console.log(util.elapsed())
 ```
 
 ## Installation
 
 ```shell
-  npm install git+ssh://git@bitbucket.org/lucidogen/lucy-midi.git --save
+  npm install git+ssh://git@bitbucket.org/lucidogen/lucy-util.git --save
 ```
 
 ## Tests

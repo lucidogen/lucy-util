@@ -35,7 +35,7 @@ value change to a continuous value.
 ## Installation
 
 ```shell
-  npm install git+ssh://git@bitbucket.org/lucidogen/lucy-util.git --save
+  npm install --save git+ssh://git@bitbucket.org/lucidogen/lucy-util.git
 ```
 
 ## Tests

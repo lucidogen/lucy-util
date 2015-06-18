@@ -11,12 +11,13 @@ describe('util.elapsed()', function() {
 
   it('should count time in seconds', function(done) {
     let start = elapsed()
+    let now = Date.now()
     setTimeout(function() {
       let diff = elapsed() - start
-      diff.should.be.above(0.015)
-      diff.should.be.below(0.025)
+      let mes  = Date.now() - now
+      parseInt(diff * 10000).should.equal(parseInt(mes * 10))
       done()
-    }, 20)
+    }, 2)
   })
 })
 

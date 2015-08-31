@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "description": "Utility functions and classes for Lucidity.",
   "main": "index.js",
+  "license": "MIT",
   "scripts": {
     "test": "make test"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/lucidogen/lucy-util.git"
+    "url": "http://github.com/lucidogen/lucy-util.git"
   },
   "keywords": [
     "live coding",
@@ -16,14 +17,8 @@
     "live"
   ],
   "author": "Gaspard Bucher <gaspard@lucidogen.io> (http://lucidogen.io/)",
-  "licenses": [
-    {
-      "type": "commercial",
-      "url": "http://lucidity.io/license"
-    }
-  ],
   "bugs": {
-    "url": "https://bitbucket.com/lucidogen/lucy-util/issues"
+    "url": "https://github.com/lucidogen/lucy-util/issues"
   },
   "devDependencies": {
     "chai": "^2.3.0",

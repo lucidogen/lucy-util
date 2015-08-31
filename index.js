@@ -12,5 +12,7 @@
 */
 'use strict'
 
-exports.elapsed    = require('./lib/elapsed')
-exports.Continuous = require('./lib/Continuous')
+module.exports = 
+{ Continuous = require ( './lib/Continuous' )
+, elapsed    = require ( './lib/elapsed'    )
+}

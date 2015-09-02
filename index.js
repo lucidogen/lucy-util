@@ -13,6 +13,7 @@
 'use strict'
 
 module.exports = 
-{ Continuous = require ( './lib/Continuous' )
-, elapsed    = require ( './lib/elapsed'    )
+{ VERSION:              '0.1.1'
+, Continuous: require ( './lib/Continuous' )
+, elapsed:    require ( './lib/elapsed'    )
 }

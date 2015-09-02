@@ -1,13 +1,15 @@
 # Lucy util [![Build Status](https://travis-ci.org/lucidogen/lucy-util.svg)](https://travis-ci.org/lucidogen/lucy-util)
 
-## Utility functions and classes for Lucidity
+Part of [Lucidity](http://lucidity.io) project.
+
+Utility functions and helper classes.
 
 ## Installation
 
 Currently only works with [**io.js**](https://iojs.org).
 
   ```shell
-  npm install --save lucidogen/lucy-util --save
+  npm install lucy-util --save
   ```
 
 ## util.elapsed()

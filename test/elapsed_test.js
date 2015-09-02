@@ -24,9 +24,9 @@ describe
         setTimeout
         ( function ()
           { let diff = elapsed () - start
-            let mes  = Date.now () - now
-            parseInt ( diff * 10000.1 )
-            .should.equal ( parseInt ( mes * 10 ) )
+            let mes  = ( Date.now () - now ) / 1000
+            diff
+            .should.be.within ( mes - 0.01, mes + 0.01 )
             done ()
           }
         , 2

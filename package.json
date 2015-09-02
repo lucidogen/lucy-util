@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/lucidogen/lucy-util.git"
+    "url": "git+ssh://git@github.com/lucidogen/lucy-util.git"
   },
   "keywords": [
     "live coding",
@@ -24,6 +24,9 @@
     "chai": "^2.3.0",
     "mocha": "~1.16.2"
   },
-  "dependencies": {
+  "dependencies": {},
+  "homepage": "https://github.com/lucidogen/lucy-util#readme",
+  "directories": {
+    "test": "test"
   }
 }

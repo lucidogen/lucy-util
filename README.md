@@ -25,12 +25,14 @@ Returns elapsed time since application start in secondes.
 ## util.Continuous
 
 When a value is regularly updated by an external source (midi sync, osc
-messages, etc) the value 'jumps' every time. This transforms a 'jumping', linear
-value change to a continuous value.
+messages, etc) the value 'jumps' every time. This transforms a discrete value
+change to a continuous, smooth value. The most important option is the
+'stiffness'. With a value of '1', the jitter in setting value is not smoothed
+out. With lower values, the returned value is smoothed.
 
   ```js
   const util = require ( 'lucy-util' )
-  let foo = new util.Continuous ()
+  let foo = new util.Continuous ( 0.8 ) // smooth follower
 
   // external (example midi sync)
   foo.setValue ( 1.0, util.elapsed () - deltaTime / 1000 )

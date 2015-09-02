@@ -12,9 +12,9 @@
     "url": "git+ssh://git@github.com/lucidogen/lucy-util.git"
   },
   "keywords": [
-    "live coding",
-    "require",
-    "live"
+    "elapsed",
+    "timing",
+    "smoothing"
   ],
   "author": "Gaspard Bucher <gaspard@lucidogen.io> (http://lucidogen.io/)",
   "bugs": {

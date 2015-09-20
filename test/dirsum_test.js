@@ -4,7 +4,7 @@ require ( 'chai' )
 .should ()
 
 const fs = require ( 'fs' )
-const checkdir = require ( '../lib/checkdir' )
+const dirsum = require ( '../lib/dirsum' )
 
 const IGNORE_FUNCTION = function ( path, filename )
 { return /^\./.exec ( filename )
@@ -20,7 +20,7 @@ const FILE_CONTENTS =
 const DIRHEX = '698999373a64a9438e0470e28636fa4a'
 
 describe
-('util.checkdir'
+('util.dirsum'
 , function ()
   { 
     beforeEach
@@ -37,7 +37,7 @@ describe
     it
     ( 'should produce a digest'
     , function ( done )
-      { checkdir
+      { dirsum
         ( base
         , function ( err, hex )
           { if ( err ) console.log ( err )
@@ -53,12 +53,12 @@ describe
     , function ( done )
       { 
         fs.writeFileSync ( base + 'foo.txt', 'Fool.' )
-        checkdir
+        dirsum
         ( base
         , function ( err, hex )
           { hex.should.not.equal ( DIRHEX )
             fs.writeFileSync ( base + 'foo.txt', FILE_CONTENTS [ 'foo.txt' ] )
-            checkdir
+            dirsum
             ( base
             , function ( err, hex )
               { hex.should.equal ( DIRHEX )
@@ -75,12 +75,12 @@ describe
     , function ( done )
       { 
         fs.writeFileSync ( base + 'other.txt', 'Fool.' )
-        checkdir
+        dirsum
         ( base
         , function ( err, hex )
           { hex.should.not.equal ( DIRHEX )
             fs.unlinkSync ( base + 'other.txt' )
-            checkdir
+            dirsum
             ( base
             , function ( err, hex )
               { hex.should.equal ( DIRHEX )
@@ -96,12 +96,12 @@ describe
     ( 'should change digest on new directory'
     , function ( done )
       { fs.mkdirSync ( base + 'other')
-        checkdir
+        dirsum
         ( base
         , function ( err, hex )
           { hex.should.not.equal ( DIRHEX )
             fs.rmdirSync ( base + 'other' )
-            checkdir
+            dirsum
             ( base
             , function ( err, hex )
               { hex.should.equal ( DIRHEX )
@@ -117,12 +117,12 @@ describe
     ( 'should change digest on file move'
     , function ( done )
       { fs.renameSync ( base + 'foo.txt', base + 'fol.txt')
-        checkdir
+        dirsum
         ( base
         , function ( err, hex )
           { hex.should.not.equal ( DIRHEX )
             fs.renameSync ( base + 'fol.txt', base + 'foo.txt')
-            checkdir
+            dirsum
             ( base
             , function ( err, hex )
               { hex.should.equal ( DIRHEX )
@@ -141,7 +141,7 @@ describe
         ( 'should ignore checksum.txt'
         , function ( done )
           { fs.writeFileSync ( base + 'checksum.txt', Math.random () )
-            checkdir
+            dirsum
             ( base
             , function ( err, hex )
               { hex.should.equal ( DIRHEX )
@@ -157,7 +157,7 @@ describe
         ( 'should not ignore checksum.txt in sub folders'
         , function ( done )
           { fs.writeFileSync ( base + 'sub/checksum.txt', Math.random () )
-            checkdir
+            dirsum
             ( base
             , function ( err, hex )
               { hex.should.not.equal ( DIRHEX )
@@ -175,7 +175,7 @@ describe
     ( 'should ignore dot files'
     , function ( done )
       { fs.writeFileSync ( base + 'sub/.foo', Math.random () )
-        checkdir
+        dirsum
         ( base
         , function ( err, hex )
           { hex.should.equal ( DIRHEX )

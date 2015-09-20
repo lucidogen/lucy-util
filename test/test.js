@@ -5,7 +5,7 @@ require ( 'chai' )
 
 const elapsed = require ( '../lib/elapsed' )
 const Continuous = require ( '../lib/Continuous' )
-const lib = require ( '../index' )
+const lib = require ( '../lib/index' )
 
 describe
 ('util'
@@ -20,6 +20,14 @@ describe
 
     it
     ( 'should export Continuous'
+    , function ()
+      { lib.Continuous
+        .should.equal ( Continuous )
+      }
+    )
+
+    it
+    ( 'should export checkdir'
     , function ()
       { lib.Continuous
         .should.equal ( Continuous )

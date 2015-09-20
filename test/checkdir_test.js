@@ -6,6 +6,11 @@ require ( 'chai' )
 const fs = require ( 'fs' )
 const checkdir = require ( '../lib/checkdir' )
 
+const IGNORE_FUNCTION = function ( path, filename )
+{ return /^\./.exec ( filename )
+      || /^checksum\.txt/.exec ( path )
+}
+
 const base = __dirname + '/fixtures/'
 const FILE_CONTENTS =
 { 'foo.txt': 'Foo.'
@@ -129,31 +134,38 @@ describe
       }
     )
 
-    it
-    ( 'should ignore checksum.txt'
-    , function ( done )
-      { fs.writeFileSync ( base + 'checksum.txt', Math.random () )
-        checkdir
-        ( base
-        , function ( err, hex )
-          { hex.should.equal ( DIRHEX )
-            fs.unlinkSync ( base + 'checksum.txt')
-            done ()
+    describe
+    ( 'with ignore function'
+    , function ()
+      { it
+        ( 'should ignore checksum.txt'
+        , function ( done )
+          { fs.writeFileSync ( base + 'checksum.txt', Math.random () )
+            checkdir
+            ( base
+            , function ( err, hex )
+              { hex.should.equal ( DIRHEX )
+                fs.unlinkSync ( base + 'checksum.txt')
+                done ()
+              }
+            , IGNORE_FUNCTION
+            )
           }
         )
-      }
-    )
 
-    it
-    ( 'should not ignore checksum.txt in sub folders'
-    , function ( done )
-      { fs.writeFileSync ( base + 'sub/checksum.txt', Math.random () )
-        checkdir
-        ( base
-        , function ( err, hex )
-          { hex.should.not.equal ( DIRHEX )
-            fs.unlinkSync ( base + 'sub/checksum.txt')
-            done ()
+        it
+        ( 'should not ignore checksum.txt in sub folders'
+        , function ( done )
+          { fs.writeFileSync ( base + 'sub/checksum.txt', Math.random () )
+            checkdir
+            ( base
+            , function ( err, hex )
+              { hex.should.not.equal ( DIRHEX )
+                fs.unlinkSync ( base + 'sub/checksum.txt')
+                done ()
+              }
+            , IGNORE_FUNCTION
+            )
           }
         )
       }

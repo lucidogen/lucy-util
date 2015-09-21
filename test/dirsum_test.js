@@ -17,7 +17,14 @@ const FILE_CONTENTS =
 , 'bar.txt': 'Bar.'
 , 'sub/baz.txt': 'Baz baz.'
 }
-const DIRHEX = '698999373a64a9438e0470e28636fa4a'
+const DIRHEX = 'adf8d610a88a379f0d4329940780abaa'
+
+const statPath = function(path) {
+  try {
+    return fs.statSync(path)
+  } catch (e) {}
+  return false
+}        
 
 describe
 ('util.dirsum'
@@ -30,6 +37,9 @@ describe
           ( base + key
           , FILE_CONTENTS [ key ]
           )
+        }
+        if ( statPath ( base + 'checksum.txt' ) )
+        { fs.unlinkSync ( base + 'checksum.txt' )
         }
       }
     )          

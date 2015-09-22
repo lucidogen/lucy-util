@@ -8,7 +8,7 @@ Utility functions and helper classes.
 
 Currently only works with [**io.js**](https://iojs.org).
 
-  ```shell
+  ```sh
   npm install lucy-util --save
   ```
 
@@ -46,7 +46,7 @@ out. With lower values, the returned value is smoothed.
 
 ## Tests
 
-  ```shell
+  ```sh
    npm test
   ```
 

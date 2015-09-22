@@ -25,14 +25,6 @@ describe
         .should.equal ( Continuous )
       }
     )
-
-    it
-    ( 'should export checkdir'
-    , function ()
-      { lib.Continuous
-        .should.equal ( Continuous )
-      }
-    )
   }
 )
 

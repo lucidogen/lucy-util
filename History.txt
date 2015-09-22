@@ -1,7 +1,3 @@
-== 0.2.0
-
-  * Adding util.dirsum to produce md5 sum on folders.
-
 == 0.1.1 2015-09-02
 
   * Fixed index.js and added test for main lib.
